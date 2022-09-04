@@ -10,7 +10,9 @@
 </head>
 
 <body>
+    
     <main class="bg-image">
+        <div id="liveAlertPlaceholder"></div>
         <div class="search-container">
             <form >
                 <input type="text" id="searchField" placeholder="¿Qué quieres preparar hoy?">
@@ -22,5 +24,10 @@
             <div class="row" id="results"></div>
         </article>
     </main>
+
+    <div id="modal-recipe" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog"></div>
+    </div>
+    
 </body>
 </html>
