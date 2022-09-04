@@ -5,11 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.scss">
+  <link rel="stylesheet" type="text/css" href="../src/scss/styles.scss">
   <title>Proyecto Equipo 15</title>
 </head>
 
 <body>
-  
+    <main class="bg-image">
+        <div class="search-container">
+            <form >
+                <input type="text" id="searchField" placeholder="¿Qué quieres preparar hoy?">
+                <input type="button" id="searchButton" value="Buscar recetas">
+            </form>
+        </div>
+
+        <article id="results-container" class="p-3">
+            <div class="row" id="results"></div>
+        </article>
+    </main>
 </body>
 </html>

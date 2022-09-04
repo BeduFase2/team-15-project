@@ -22,11 +22,13 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@popperjs/core": "^2.11.6",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "exports-loader": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "i": "^0.3.7",
     "node-sass": "^7.0.1",
     "postcss": "^8.4.16",
     "postcss-loader": "^7.0.1",
