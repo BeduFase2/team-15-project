@@ -23,6 +23,23 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
+                test: /\.scss$/i,
+                use: [
+                    {
+                      loader: 'style-loader'
+                    },
+                    {
+                      loader: 'css-loader'
+                    },
+                    {
+                      loader: 'postcss-loader'
+                    },
+                    {
+                      loader: 'sass-loader'
+                    }
+                  ]
+            },
+            {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader',
