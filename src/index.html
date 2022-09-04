@@ -17,10 +17,33 @@
                 <input type="button" id="searchButton" value="Buscar recetas">
             </form>
         </div>
-
+        
         <article id="results-container" class="p-3">
             <div class="row" id="results"></div>
         </article>
     </main>
+
+    <div id="modal" class="px-4">
+      <span class="close">&times;</span>
+      <div class="card mb-5">
+        <div class="row">
+          <div class="col-md-6 px-5 py-5">
+            <img id="modal-image">
+          </div>
+          <div class="col-md-6 px-5 py-5">
+            <h3 id="recipe-title"></h3>
+            <p><strong>Ingredients: </strong></p>
+            <div id="ingredients-list"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 px-5 py-5">
+            <p><strong>Instructions: </strong></p>
+            <p id="recipe-instructions"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/index.js"></script>
 </body>
 </html>
