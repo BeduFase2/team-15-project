@@ -1,19 +1,29 @@
 import * as MyMeal from './request'
+import Swal from 'sweetalert2';
 
 // Check if the text is valid, if so it request to the API otherwise show an error
 function searchRecipe(textToSearch) {
-    document.getElementById("recipes-container").style.display = 'block';
     const container = document.getElementById("carousel-body");
     container.innerHTML = '';
     
     if (!textToSearch.length) {
-        alert('Debe ingresar un termino de búsqueda.', 'danger')
+        Swal.fire({
+            icon: 'error',
+            title: "Valor invalido",
+            text: "Ingresa un valor correcto"
+        });
+        document.getElementById("recipes-container").style.display = 'none';
     } 
     else {
         MyMeal.searchMealByName(textToSearch).then(function (data) {
             if (!data.length) {
-                alert('No se encontró información.', 'danger')
+                Swal.fire({
+                    icon: 'info',
+                    title: "No se encontraron resultados",
+                });
+                document.getElementById("recipes-container").style.display = 'none';
             } else {
+                document.getElementById("recipes-container").style.display = 'block';
                 splitData(getItemObject(data));
                 container.childNodes[0].scrollIntoView();
             }
