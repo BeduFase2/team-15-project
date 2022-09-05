@@ -19,10 +19,11 @@
 }
 
 form{
-    background: black;
+    // background: black;
     width: 600px;
     height: 55px;
     display: flex;
+
 }
 
 form input{
@@ -35,6 +36,17 @@ form button {
     padding: 10px 50 px;
     border: none;
     outline: none;
+}
+
+#searchButton{
+    border-radius: 0 50px 50px 0;
+    background-color: #C3845C;
+    color: #1E3332    ;
+}
+
+#searchField{
+    border-radius: 50px 0px 0px 50px;
+    padding-left: 10px;
 }
 
 .bg-image {
@@ -53,8 +65,13 @@ form button {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .ingredients-list {
     column-count: 3;
+}
+
+#recipes-container{
+    background-color: #9BA1A3 0.3;
 }
