@@ -4,7 +4,7 @@ Buscador de recetas
 Proyecto para la fase 2 del programa Desarrollo Web Full-Stack de BEDU
 
 # Live demo
-<a href="[http://example.com/](https://loquacious-dragon-1fa137.netlify.app/)" target="_blank">Netlify App</a>
+[Netlify App](https://loquacious-dragon-1fa137.netlify.app/)
 
 # Requisitos
 * Node.js
