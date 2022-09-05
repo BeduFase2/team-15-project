@@ -19,6 +19,16 @@ export async function getMealById(id) {
         })
 }
 
+export async function getRandomMeal() {
+    return await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            return data.meals || [];
+        })
+}
+
 export async function getIngredientThumbnail(ingredient) {
     return `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`;
     // return await fetch(`https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`)

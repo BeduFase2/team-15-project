@@ -32,6 +32,17 @@ function searchRecipe(textToSearch) {
     }
 }
 
+function randomReceipe(){
+    MyMeal.getRandomMeal().then((data) => {
+        if (!data.length) {
+            alert('Error no se encontró información.', 'danger')
+        } else {
+            let randomReceipeResult = getItemObject(data);
+            showDetail(randomReceipeResult[0].id)
+        }
+    });
+}
+
 function alert(message, type) {
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
     var wrapper = document.createElement('div')
@@ -192,4 +203,4 @@ async function getIngredients(data) {
     return list;
 }
 
-export{ searchRecipe }
+export { searchRecipe, randomReceipe }
