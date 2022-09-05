@@ -1,3 +1,4 @@
+// Make a request to the api searching by name
 export async function searchMealByName(value) {
     return await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
     .then(function (response) {
@@ -7,6 +8,7 @@ export async function searchMealByName(value) {
     })
 }
 
+// Make a request to the api seaching by id
 export async function getMealById(id) {
     return await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
         .then(function (response) {
