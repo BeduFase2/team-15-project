@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { Chunk } = require('webpack');
 
 module.exports = {
     entry: {
@@ -7,13 +8,13 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Webpack App',
             filename: 'index.html',
-            template: './src/index.html'
+            template: './src/index.html',
         })
     ],
     module: {

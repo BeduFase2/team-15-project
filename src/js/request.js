@@ -1,4 +1,4 @@
-export async function seachMealByName(value) {
+export async function searchMealByName(value) {
     return await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
     .then(function (response) {
         return response.json();

@@ -6,6 +6,18 @@
     box-sizing: border-box;
 }
 
+.carousel-control-prev{
+  justify-content: start; 
+}
+
+.carousel-control-next{
+    justify-content: end;
+}
+
+#recipes-container{
+    display: none;
+}
+
 form{
     background: black;
     width: 600px;

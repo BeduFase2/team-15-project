@@ -1,30 +1,24 @@
 import * as MyMeal from './request'
 
+// Check if the text is valid, if so it request to the API otherwise show an error
 function searchRecipe(textToSearch) {
-    
-    const container = document.getElementById("results-container");
+    document.getElementById("recipes-container").style.display = 'block';
+    const container = document.getElementById("carousel-body");
     container.innerHTML = '';
     
     if (!textToSearch.length) {
         alert('Debe ingresar un termino de búsqueda.', 'danger')
-    } else if (textToSearch.length === 1) {
-        MyMeal.seachMealByName(textToSearch).then(function (data) {
+    } 
+    else {
+        MyMeal.searchMealByName(textToSearch).then(function (data) {
             if (!data.length) {
                 alert('No se encontró información.', 'danger')
             } else {
-                container.appendChild(getCard(getItemObject(data)));
-                container.scrollIntoView();
+                splitData(getItemObject(data));
+                container.childNodes[0].scrollIntoView();
             }
-        });
-    } else {
-        MyMeal.seachMealByName(textToSearch).then(function (data) {
-            if (!data.length) {
-                alert('No se encontró información.', 'danger')
-            } else {
-                container.appendChild(getCard(getItemObject(data)));
-                container.scrollIntoView();
-            }
-        });
+        })
+        .catch(error => console.log(error));
     }
 }
 
@@ -35,6 +29,8 @@ function alert(message, type) {
     alertPlaceholder.append(wrapper)
 }
 
+// Map the array of results to a new object, choosing the 
+// attributes needed
 const getItemObject = (data) => {
     return data.map(item => {
         return {
@@ -47,25 +43,52 @@ const getItemObject = (data) => {
     });
 }
 
+// Split the array of results to create the carousel's slides
+// and call getCard() to create the slides
+function splitData(data)
+{
+    let index = 0;
+    let first = true;
+    const carouselBody = document.getElementById("carousel-body");
+    while(index < data.length)
+    {
+        let itemSlide = document.createElement("div");
+        itemSlide.className = "carousel-item";
+        if(first)
+        {
+            itemSlide.className='carousel-item active';
+            first = false;
+        }
+        itemSlide.appendChild(getCard(data.splice(index,4)));
+        carouselBody.appendChild(itemSlide);
+    }
+}
+
+// Receive an array of length <= 4 and create a slide with 4 recipes
+// and return the slide
 function getCard(data) {
     const results = document.createElement('div');
-    results.className = 'row';
-
+    results.className = "row";
     data.forEach(async object => {
         const container = document.createElement("div");
-        container.className = 'col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2';
+        container.className = 'col-lg-3 col-md-6 col-sm-12 mb-4';
         const card = document.createElement('div');
-        card.className = "card w-100"
-        const cardBody = document.createElement('div');
-        cardBody.className = "card-body";
+        card.className = "card";
         const image = document.createElement('img');
         image.className = 'card-img-top';
+        const cardBody = document.createElement('div');
+        cardBody.className = "card-body";
         const title = document.createElement('h5');
         title.className = 'card-title';
-        const subtitle = document.createElement('h6');
-        subtitle.className = 'card-subtitle mb-2 text-muted';
+        // const subtitle = document.createElement('h6');
+        // subtitle.className = 'card-subtitle mb-2 text-muted';
         const text = document.createElement('p');
         text.className = 'card-text';
+        const details = document.createElement('a');
+        details.className = 'btn btn-primary';
+        details.setAttribute("data-bs-toggle", "modal");
+        details.setAttribute("data-bs-target", "#modal-recipe");
+        details.onclick = function () { showDetail(object['id']); };
 
         image.setAttribute("data-bs-toggle", "modal");
         image.setAttribute("data-bs-target", "#modal-recipe");
@@ -79,18 +102,20 @@ function getCard(data) {
         title.appendChild(document.createTextNode(name));
         cardBody.appendChild(title);
 
-        subtitle.appendChild(document.createTextNode(object['area']));
-        cardBody.appendChild(subtitle);
+        // subtitle.appendChild(document.createTextNode(object['area']));
+        // cardBody.appendChild(subtitle);
 
         text.appendChild(document.createTextNode(object['category']));
         cardBody.appendChild(text);
 
+        details.appendChild(document.createTextNode("Ver detalles"));
+        cardBody.appendChild(details);
+       
         card.appendChild(cardBody);
         container.appendChild(card);
 
         results.appendChild(container);
     });
-
     return results;
 }
 
