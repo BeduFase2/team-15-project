@@ -20,14 +20,33 @@
             </form>
         </div>
 
-        <article id="results-container" class="p-3">
+        <!-- <article id="results-container" class="p-3">
             <div class="row" id="results"></div>
-        </article>
+        </article> -->
     </main>
 
     <div id="modal-recipe" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog"></div>
     </div>
+
+    <!-- Carousel that shows the content of the response in slides, each slide
+    has 4 recepeist -->
+    <section class="container-fluid mt-4" id="recipes-container">
+        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-touch="false">
+            <div class="carousel-inner px-5" id="carousel-body">
+            </div>
+            <div id="buttons">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
     
 </body>
 </html>
